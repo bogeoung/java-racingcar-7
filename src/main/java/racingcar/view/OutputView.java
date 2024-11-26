@@ -2,11 +2,11 @@ package racingcar.view;
 
 import java.util.List;
 
-public class Outputview {
+public class OutputView {
 
     public static final String PRINT_UNIT = "-";
-    public static final String NAME_RESULT_SEPEARTOR = " : ";
-    public static final String WINNER_SEPERATOR = ", ";
+    public static final String NAME_RESULT_SEPARATOR = " : ";
+    public static final String WINNER_SEPARATOR = ", ";
 
     public static void inputNotValid() {
         System.out.println("입력이 올바르지 않습니다.");
@@ -30,10 +30,10 @@ public class Outputview {
         for (int i = 0; i < position; i++) {
             buffer.append(PRINT_UNIT);
         }
-        System.out.println(name + NAME_RESULT_SEPEARTOR + buffer);
+        System.out.println(name + NAME_RESULT_SEPARATOR + buffer);
     }
 
     public static void announceWinner(List<String> winners) {
-        System.out.println("최종 우승자 : " + String.join(WINNER_SEPERATOR, winners));
+        System.out.println("최종 우승자 : " + String.join(WINNER_SEPARATOR, winners));
     }
 }

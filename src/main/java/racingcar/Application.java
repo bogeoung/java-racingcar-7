@@ -1,15 +1,15 @@
 package racingcar;
 
-import racingcar.view.Inputview;
+import racingcar.view.InputView;
 
 public class Application {
 
     public static void main(String[] args) {
-        Inputvalidator inputvalidator;
+        InputValidator inputvalidator;
         do {
-            String inputNames = Inputview.startRacingCar();
-            String inputTimes = Inputview.getRacingTimes();
-            inputvalidator = new Inputvalidator(inputNames, inputTimes);
+            String inputNames = InputView.startRacingCar();
+            String inputTimes = InputView.getRacingTimes();
+            inputvalidator = new InputValidator(inputNames, inputTimes);
         } while (!inputvalidator.validate());
         Game game = new Game(inputvalidator.getCarNames(), inputvalidator.getTimes());
         game.start();

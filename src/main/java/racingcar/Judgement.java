@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.view.Outputview;
+import racingcar.view.OutputView;
 
 public class Judgement {
 
@@ -14,7 +14,7 @@ public class Judgement {
 
     public void announceResult() {
         List<String> winners = getWinners();
-        Outputview.announceWinner(winners);
+        OutputView.announceWinner(winners);
     }
 
     private List<String> getWinners() {

@@ -1,12 +1,10 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import racingcar.view.Outputview;
+import racingcar.view.OutputView;
 
 public class Game {
 
-    public static final int DICE_THRESHOLD = 4;
     private Cars cars;
     private int gameTimes;
 
@@ -16,10 +14,13 @@ public class Game {
     }
 
     public void start() {
-        Outputview.result();
+        OutputView.result();
         for (int i = 0; i < gameTimes; i++) {
-            playOneGame();
+            for (Car car : cars.getCars()) {
+                playOneGame(car, Dice.roll());
+            }
         }
+        System.out.println();
     }
 
     public void judge() {
@@ -27,17 +28,11 @@ public class Game {
         judgement.announceResult();
     }
 
-    private void playOneGame() {
-        for (Car car : cars.getCars()) {
-            if (throwDice()) {
-                car.move();
-            }
-            Outputview.printCurrentLocation(car.getName(), car.getPosition());
+    public void playOneGame(Car car, Boolean diceResult) {
+        if (diceResult) {
+            car.move();
         }
-        System.out.println();
+        OutputView.printCurrentLocation(car.getName(), car.getPosition());
     }
 
-    private boolean throwDice() {
-        return Randoms.pickNumberInRange(0, 9) >= DICE_THRESHOLD;
-    }
 }
