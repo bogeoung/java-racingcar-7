@@ -8,17 +8,30 @@ import racingcar.view.Outputview;
 
 public class Inputvalidator {
 
-    String inputs;
+    private final String inputNames;
+    private final String inputTimes;
 
-    public Inputvalidator(String inputs) {
-        this.inputs = inputs;
+    public Inputvalidator(String inputsNames, String inputTimes) {
+        this.inputNames = inputsNames;
+        this.inputTimes = inputTimes;
     }
 
     public boolean validate() {
         //콤마와 이름으로 구성되어 있는지
         //이름에 중복이 없는지
         //
-        return checkDuplicate();
+        return checkDuplicate() && checkValidTimes();
+    }
+
+    private boolean checkValidTimes() {
+        int times;
+        try {
+            times = Integer.parseInt(inputTimes);
+        } catch (NumberFormatException e) {
+            Outputview.inputTimeNotValid();
+            return false;
+        }
+        return times > 0;
     }
 
     private boolean checkDuplicate() {
@@ -36,7 +49,11 @@ public class Inputvalidator {
 
 
     public List<String> getCarNames() {
-        return Arrays.stream(inputs.split(",", 0)).map(String::toLowerCase).toList();
+        return Arrays.stream(inputNames.split(",", 0)).map(String::toLowerCase).toList();
+    }
+
+    public int getTimes() {
+        return Integer.parseInt(inputTimes);
     }
 
 }

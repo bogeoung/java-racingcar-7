@@ -9,6 +9,11 @@ public class Inputview {
         return getline();
     }
 
+    public static String getRacingTimes() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return getline();
+    }
+
     private static String getline() {
         return Console.readLine();
     }

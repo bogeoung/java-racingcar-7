@@ -6,10 +6,14 @@ public class Application {
 
     public static void main(String[] args) {
         Inputvalidator inputvalidator;
-
         do {
             String inputNames = Inputview.startRacingCar();
-            inputvalidator = new Inputvalidator(inputNames);
+            String inputTimes = Inputview.getRacingTimes();
+            inputvalidator = new Inputvalidator(inputNames, inputTimes);
         } while (!inputvalidator.validate());
+        Game game = new Game(inputvalidator.getCarNames(), inputvalidator.getTimes());
+        game.start();
+        game.judge();
     }
+
 }
